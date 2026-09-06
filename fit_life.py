@@ -48,6 +48,8 @@ def calculate_bmi(user_weight, user_height):
         return None
     bmi = user_weight / (user_height ** 2)
     return bmi
+
+
 result_bmi = calculate_bmi(user_weight, user_height)
 
 
