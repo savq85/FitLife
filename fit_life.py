@@ -1,26 +1,61 @@
-# Проект FitLife - MVP версия 1.0
+import sys
+import io
 
 
-# 1. Знакомство
-# TODO: Спроси у пользователя имя и сохрани в переменную user_name
-# TODO: Спроси возраст и сохрани в переменную user_age (не забудь преобразовать в число)
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+sys.stdin = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
 
 
-# 2. Сбор данных
-# TODO: Запроси вес (в кг) и сохрани в user_weight (тип float)
-# TODO: Запроси рост (в метрах, например 1.75) и сохрани в user_height (тип float)
+while True:
+    user_name = input("Введите ваше имя:")
+    if not user_name:
+        print("Введите имя")
+    elif not user_name.isalpha():
+        print("Имя должно состоять из букв")
+    else:
+        break
 
 
-# 3. Логика расчетов (Функции как "черный ящик": используем арифметику)
-# Формула ИМТ: вес разделить на (рост в квадрате)
-# TODO: Рассчитай bmi (Индекс массы тела)
+while True:
+    try:
+        user_age = int(input("Введите ваш возраст:"))
+        if 0 <= user_age <= 100:
+            break
+    except ValueError:
+        print("Пожалуйста, введите ваш возраст")
 
 
-# Подсчет воды: вес * 30 мл
-# TODO: Рассчитай water_needed
+while True:
+    try:
+        user_weight = float(input("Введите ваш вес (например 100 кг):"))
+        if 1 <= user_weight <= 200:
+            break
+    except ValueError:
+        print("Пожалуйста, введите вас вес")
 
 
-# 4. Вывод красивого результата
-# TODO: Используй f-строку, чтобы вывести приветствие, например: "Привет, Иван!"
-# TODO: Выведи возраст, ИМТ (округленный до 1 знака) и норму воды.
+while True:
+    try:
+        user_height = float(input("Введите ваш рост (например 1.75):"))
+        if 1 <= user_height <= 250:
+            break
+    except ValueError:
+        print("Пожалуйста, введите ваш рост в метрах")
+
+
+def calculate_bmi(user_weight, user_height):
+    if user_height <= 0:
+        return None
+    bmi = user_weight / (user_height ** 2)
+    return bmi
+result_bmi = calculate_bmi(user_weight, user_height)
+
+
+water_ml = user_weight * 30
+water_l = water_ml / 1000
+
+
+print(f"Отчет для пользователя: {user_name} ({user_age}) лет!")
+print(f"Твой Индекс Массы Тела: {round(result_bmi, 1)}")
+print(f"Рекомендуемая норма воды: {round(water_l, 2)} л. в день")
 print("Расчет окончен. Будьте здоровы!")
