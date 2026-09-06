@@ -44,6 +44,7 @@ while True:
 
 
 def calculate_bmi(user_weight, user_height):
+    """Функция вызывает функцию"""
     if user_height <= 0:
         return None
     bmi = user_weight / (user_height ** 2)
