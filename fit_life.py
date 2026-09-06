@@ -1,5 +1,5 @@
-import sys
 import io
+import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stdin = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
@@ -43,7 +43,7 @@ while True:
 
 
 def calculate_bmi(user_weight, user_height):
-    """Функция вызывает функцию"""
+    """Функция для расчета ИМТ"""
     if user_height <= 0:
         return None
     return user_weight / (user_height ** 2)
