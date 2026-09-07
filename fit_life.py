@@ -1,10 +1,3 @@
-import io
-import sys
-
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-sys.stdin = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
-
-
 MIN_AGE = 10
 MAX_AGE = 100
 MIN_WIEGHT = 10
